@@ -34,9 +34,10 @@ git push
 ## What's Included
 
 - **Window Manager:** Hyprland
-- **Bar:** Waybar
+- **Bar & Widgets:** Quickshell (End-4 / Illogical Impulse modded dots)
 - **Terminal:** Kitty / Alacritty
 - **App Launcher:** Rofi (Wayland)
 - **Notifications:** Dunst
 - **Shell:** Zsh + Starship
 - **Logout Menu:** Wlogout
+- **Custom Fonts & Icons:** Google Sans Flex, Illogical Impulse assets
