@@ -1,0 +1,3 @@
+Personal Hyprland bits (not from end-4 upstream hyprland/*).
+Sourced last from hyprland.conf so these override stock rules.
+Edit rules.conf / layers.conf here; keep hyprland/*.conf closer to upstream for merges.

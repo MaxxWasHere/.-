@@ -1,0 +1,94 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "spacing": 4,
+  "margin-top": 8,
+  "margin-left": 12,
+  "margin-right": 12,
+  "margin-bottom": 0,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "custom/launcher",
+    "mpris"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "temperature",
+    "network",
+    "battery",
+    "custom/notifications",
+    "clock",
+    "custom/settings"
+  ],
+
+  "custom/launcher": {
+    "format": "󰣇",
+    "tooltip": "Left-Click: Overview\nRight-Click: Left Sidebar (AI/Apps)",
+    "on-click": "hyprctl dispatch global quickshell:overviewWorkspacesToggle",
+    "on-click-right": "hyprctl dispatch global quickshell:sidebarLeftToggle"
+  },
+
+  "mpris": {
+    "format": "  {dynamic}",
+    "format-paused": "  {dynamic}",
+    "max-length": 45,
+    "interval": 1
+  },
+
+  "hyprland/workspaces": {
+    "format": "",
+    "on-click": "activate",
+    "all-outputs": true,
+    "show-special": false,
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    }
+  },
+
+  "temperature": {
+    "critical-threshold": 90,
+    "interval": 5,
+    "format": " {temperatureC}°C",
+    "hwmon-path": "/sys/class/thermal/thermal_zone0/temp"
+  },
+
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀  Wired",
+    "format-disconnected": "󰤭  Offline",
+    "tooltip-format": "{ifname} · {ipaddr}",
+    "interval": 5
+  },
+
+  "battery": {
+    "states": { "warning": 35, "critical": 18 },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "󱘖  {capacity}%",
+    "format-plugged": "󱘖  {capacity}%",
+    "format-full": "󰁹  {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "interval": 15
+  },
+
+  "custom/notifications": {
+    "format": "",
+    "tooltip": "Right Sidebar (Notifications & Quick Settings)",
+    "on-click": "hyprctl dispatch global quickshell:sidebarRightToggle"
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "format-alt": "{:%a %d %b · %H:%M}",
+    "tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "custom/settings": {
+    "format": "",
+    "tooltip": "Left-Click: Quickshell Settings\nRight-Click: Wallpaper Selector",
+    "on-click": "qs -p ~/.config/quickshell/ii/settings.qml",
+    "on-click-right": "hyprctl dispatch global quickshell:wallpaperSelectorToggle"
+  }
+}

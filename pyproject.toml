@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dotswitch"
+version = "0.1.0"
+description = "Switch symlinked dotfile profiles on Linux"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "DOTSWITCH" }]
+dependencies = []
+
+[project.scripts]
+dotswitch = "dotswitch.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["dotswitch"]
