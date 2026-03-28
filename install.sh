@@ -57,13 +57,14 @@ PACKAGES=(
     grim
     slurp
     wl-clipboard
-    wl-clip-persist
     cliphist
     network-manager-applet
     pavucontrol
     blueman
     brightnessctl
     playerctl
+    dart-sass
+    fd
     
     # Fonts
     ttf-jetbrains-mono-nerd
@@ -87,6 +88,9 @@ sudo pacman -S --needed --noconfirm "${PACKAGES[@]}"
 AUR_PACKAGES=(
     wlogout
     swww
+    wl-clip-persist
+    quickshell
+    matugen-bin
     # add other specific AUR packages here
 )
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
@@ -95,6 +99,7 @@ yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 echo -e "${GREEN}Setting up dotfiles...${NC}"
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/config"
+LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/local"
 CONFIG_DIR="$HOME/.config"
 
 # Create config directory if it doesn't exist
@@ -103,6 +108,8 @@ mkdir -p "$CONFIG_DIR"
 # List of configs to link
 CONFIGS=(
     "hypr"
+    "quickshell"
+    "illogical-impulse"
     "waybar"
     "kitty"
     "alacritty"
@@ -130,7 +137,21 @@ for config in "${CONFIGS[@]}"; do
     fi
 done
 
-# 6. Enable services
+# 6. Install custom fonts and icons
+echo -e "${GREEN}Installing custom fonts and icons...${NC}"
+mkdir -p "$HOME/.local/share/fonts"
+mkdir -p "$HOME/.local/share/icons"
+
+if [ -d "$LOCAL_DIR/share/fonts/illogical-impulse-google-sans-flex" ]; then
+    cp -r "$LOCAL_DIR/share/fonts/illogical-impulse-google-sans-flex" "$HOME/.local/share/fonts/"
+    fc-cache -fv
+fi
+
+if [ -e "$LOCAL_DIR/share/icons/illogical-impulse.svg" ]; then
+    cp "$LOCAL_DIR/share/icons/illogical-impulse.svg" "$HOME/.local/share/icons/"
+fi
+
+# 7. Enable services
 echo -e "${GREEN}Enabling services...${NC}"
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
