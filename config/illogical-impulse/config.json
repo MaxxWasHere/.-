@@ -217,7 +217,7 @@
             "clickToShow": true
         },
         "topLeftIcon": "spark",
-        "useWaybar": true,
+        "useWaybar": false,
         "utilButtons": {
             "showColorPicker": false,
             "showDarkModeToggle": false,
